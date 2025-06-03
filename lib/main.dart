@@ -17,7 +17,8 @@ import 'package:muslim_app/view/page/surat_page.dart'; // Import this
 import 'package:muslim_app/view/page/qibla_page.dart'; // Import this
 import 'package:muslim_app/viewmodel/qibla_viewmodel.dart'; // Import this
 import 'package:muslim_app/model/qibla_model.dart';
-import 'package:muslim_app/view/page/splash.dart'; // Import this
+import 'package:muslim_app/view/page/splash.dart';
+import 'package:muslim_app/view/page/detail_surat_page.dart'; // Import this
 
 void main() {
   runApp(const MainApp());

@@ -52,5 +52,8 @@ flutter:
     - family: Montserrat
       fonts:
         - asset: assets/fonts/Montserrat-Bold.ttf
+    - family: Amiri
+      fonts:
+        - asset: assets/fonts/Amiri-Bold.ttf
           
 

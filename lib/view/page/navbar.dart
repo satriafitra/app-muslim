@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:muslim_app/view/page/jadwal_page.dart';
 import 'package:muslim_app/view/page/qibla_page.dart';
 import 'package:muslim_app/view/page/surat_page.dart';
+import 'package:muslim_app/view/page/about.dart';
 
 class AnimatedNavBar extends StatefulWidget {
   @override
@@ -36,14 +37,9 @@ class _AnimatedNavBarState extends State<AnimatedNavBar> {
             _selectedIndex = index;
           });
         },
-        children: [
-          JadwalPage(),
-          SuratPage(),
-          KiblatPage(),
-        ],
+        children: [JadwalPage(), SuratPage(), KiblatPage(), TentangPage()],
       ),
       bottomNavigationBar: ClipRRect(
-     
         child: Material(
           color: Color(0xFF0F341E), // Warna navbar hijau gelap
           elevation: 10, // Tambahkan elevasi agar terlihat lebih premium
@@ -58,7 +54,7 @@ class _AnimatedNavBarState extends State<AnimatedNavBar> {
                   Icons.home,
                   Icons.menu_book,
                   Icons.gps_fixed,
-                  Icons.person,
+                  Icons.info_outline
                 ];
                 return GestureDetector(
                   onTap: () => _onItemTapped(index),
