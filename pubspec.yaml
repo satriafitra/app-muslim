@@ -7,12 +7,19 @@ environment:
   sdk: ^3.6.0
 
 dependencies:
+  shimmer: ^3.0.0
   flutter:
     sdk: flutter
   gap: ^3.0.1
   http: ^0.13.4
   provider: ^6.1.2
   intl: ^0.18.1
+  curved_navigation_bar: ^1.0.3 
+  flutter_compass: ^0.8.1
+  geolocator: ^13.0.2
+  permission_handler: ^11.4.0
+  lottie: ^2.3.0
+
   
 dev_dependencies:
   flutter_test:
@@ -25,12 +32,25 @@ flutter:
   assets:
    - assets/images/mosque.png
    - assets/images/quran.png
+   - assets/images/baru3.jpg
+   - assets/images/bg.jpg
+   - assets/images/mas.png
+   - assets/images/ok.png
+   - assets/images/oke.png
+   - assets/images/kiblat.png
+   - assets/images/compass.png
 
   fonts:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
         - asset: assets/fonts/Poppins-Bold.ttf
+        - asset: assets/fonts/Montserrat-Bold.ttf
           weight: 700
         - asset: assets/fonts/Poppins-SemiBold.ttf
           weight: 600
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Bold.ttf
+          
+
