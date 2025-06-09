@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:muslim_app/model/ayat_model.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class DetailSuratViewModel extends ChangeNotifier {
   List<Ayat> _ayatList = [];
@@ -15,40 +17,21 @@ class DetailSuratViewModel extends ChangeNotifier {
     _error = null;
     notifyListeners();
 
+    final url = Uri.parse('https://equran.id/api/v2/surat/$suratNomor');
+
     try {
-      // Contoh data surat Al-Fatihah manual
-      _ayatList = [
-        Ayat(
-          arab: 'بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ',
-          terjemah: 'Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.',
-        ),
-        Ayat(
-          arab: 'الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ',
-          terjemah: 'Segala puji bagi Allah, Tuhan seluruh alam.',
-        ),
-        Ayat(
-          arab: 'الرَّحْمَـٰنِ الرَّحِيمِ',
-          terjemah: 'Yang Maha Pengasih, Maha Penyayang.',
-        ),
-        Ayat(
-          arab: 'مَالِكِ يَوْمِ الدِّينِ',
-          terjemah: 'Pemilik hari pembalasan.',
-        ),
-        Ayat(
-          arab: 'إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ',
-          terjemah: 'Hanya kepada Engkaulah kami menyembah dan hanya kepada Engkaulah kami mohon pertolongan.',
-        ),
-        Ayat(
-          arab: 'اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ',
-          terjemah: 'Tunjukilah kami jalan yang lurus,',
-        ),
-        Ayat(
-          arab: 'صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ',
-          terjemah: '(yaitu) jalan orang-orang yang telah Engkau beri nikmat kepada mereka; bukan (jalan) mereka yang dimurkai, dan bukan (pula jalan) mereka yang sesat.',
-        ),
-      ];
+      final response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        final jsonData = json.decode(response.body);
+        final List<dynamic> ayatJson = jsonData['data']['ayat'];
+
+        _ayatList = ayatJson.map((e) => Ayat.fromJson(e)).toList();
+      } else {
+        _error = 'Gagal memuat data: ${response.statusCode}';
+      }
     } catch (e) {
-      _error = 'Error: $e';
+      _error = 'Terjadi kesalahan: $e';
     }
 
     _loading = false;

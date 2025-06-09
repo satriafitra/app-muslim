@@ -39,6 +39,7 @@ flutter:
    - assets/images/oke.png
    - assets/images/kiblat.png
    - assets/images/compass.png
+   - assets/lottie/animasi.json
 
   fonts:
     - family: Poppins

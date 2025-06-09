@@ -62,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                 SizedBox(
                   width: 250,
                   height: 250,
-                  child: Lottie.asset('../assets/lottie/animasi.json'), // ganti sesuai file kamu
+                  child: Lottie.asset('assets/lottie/animasi.json'), // ganti sesuai file kamu
                 ),
 
                 const SizedBox(height: 20),
